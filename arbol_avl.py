@@ -141,3 +141,16 @@ class ArbolAVL:
             return nodo
 
         self.raiz = _eliminar(self.raiz, valor)
+
+    def inorden(self):
+        resultado = []
+        pila = []
+        actual = self.raiz
+        while pila or actual:
+            while actual:
+                pila.append(actual)
+                actual = actual.izquierdo
+            actual = pila.pop()
+            resultado.append(actual.valor)
+            actual = actual.derecho
+        return resultado
