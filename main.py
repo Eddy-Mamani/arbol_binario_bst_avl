@@ -9,7 +9,8 @@ def menu_bst():
         print("2. Buscar")
         print("3. Eliminar")
         print("4. Mostrar Inorden")
-        print("5. Salir BST")
+        print("5. Mostrar altura")
+        print("6. Salir BST")
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
@@ -27,6 +28,8 @@ def menu_bst():
         elif opcion == "4":
             print("Inorden:", arbol.inorden())
         elif opcion == "5":
+            print("altura del arbol bst:", arbol.altura())
+        elif opcion == "6":
             break
         else:
             print("Opción inválida.")
@@ -39,7 +42,8 @@ def menu_avl():
         print("2. Buscar")
         print("3. Eliminar")
         print("4. Mostrar Inorden")
-        print("5. Salir AVL")
+        print("5. mostrar altura")
+        print("6. Salir AVL")
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
@@ -57,6 +61,8 @@ def menu_avl():
         elif opcion == "4":
             print("Inorden:", arbol.inorden())
         elif opcion == "5":
+            print("altura del arbol avl:", arbol.altura())
+        elif opcion == "6":
             break
         else:
             print("Opción inválida.")

@@ -154,3 +154,6 @@ class ArbolAVL:
             resultado.append(actual.valor)
             actual = actual.derecho
         return resultado
+    
+    def altura(self):
+        return self.obtener_altura(self.raiz)

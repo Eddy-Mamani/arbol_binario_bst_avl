@@ -75,3 +75,10 @@ class ArbolBST:
             resultado.append(actual.valor)
             actual = actual.derecho
         return resultado
+
+    def altura(self):
+        def _altura(nodo):
+            if nodo is None:
+                return 0
+            return 1 + max(_altura(nodo.izquierdo), _altura(nodo.derecho))
+        return _altura(self.raiz)
