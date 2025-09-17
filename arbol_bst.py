@@ -26,3 +26,59 @@ class ArbolBST:
                 actual = actual.derecho
             else:
                 return 
+            
+    def buscar(self, valor):
+        actual = self.raiz
+        while actual:
+            if valor == actual.valor:
+                return True
+            elif valor < actual.valor:
+                actual = actual.izquierdo
+            else:
+                actual = actual.derecho
+        return False
+
+    def eliminar(self, valor):
+        def _minimo(nodo):
+            while nodo.izquierdo:
+                nodo = nodo.izquierdo
+            return nodo
+
+        def _eliminar(nodo, valor):
+            if nodo is None:
+                return None
+            if valor < nodo.valor:
+                nodo.izquierdo = _eliminar(nodo.izquierdo, valor)
+            elif valor > nodo.valor:
+                nodo.derecho = _eliminar(nodo.derecho, valor)
+            else:
+                if nodo.izquierdo is None:
+                    return nodo.derecho
+                elif nodo.derecho is None:
+                    return nodo.izquierdo
+                temp = _minimo(nodo.derecho)
+                nodo.valor = temp.valor
+                nodo.derecho = _eliminar(nodo.derecho, temp.valor)
+            return nodo
+
+        self.raiz = _eliminar(self.raiz, valor)
+
+    def inorden(self):
+        resultado = []
+        pila = []
+        actual = self.raiz
+        while pila or actual:
+            while actual:
+                pila.append(actual)
+                actual = actual.izquierdo
+            actual = pila.pop()
+            resultado.append(actual.valor)
+            actual = actual.derecho
+        return resultado
+
+    def altura(self):
+        def _altura(nodo):
+            if nodo is None:
+                return 0
+            return 1 + max(_altura(nodo.izquierdo), _altura(nodo.derecho))
+        return _altura(self.raiz)
